@@ -46,3 +46,6 @@ end
 
 # Omniauth Strategy
 gem 'omniauth-twitter'
+
+# Figaro for ENV variables
+gem 'figaro'
