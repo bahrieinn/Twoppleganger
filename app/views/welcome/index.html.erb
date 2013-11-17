@@ -4,7 +4,7 @@
   <%= link_to 'Sign out', "/signout" %>
   <p>Signed in as @<%= current_user.name %></p>
   <%= image_tag current_user.profile_pic_url %>
-  <%= link_to 'Find your Twoppleganger', "/twoppleganger" %>
+  <%= link_to 'Find your Twoppleganger', "/match" %>
 <% else %>
   <p>Sign in to Twitter to find your Twitter Doppleganger</p>
   <%= link_to "Sign in", "/auth/twitter" %>
