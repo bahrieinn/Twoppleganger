@@ -51,3 +51,5 @@ gem 'omniauth-twitter'
 gem 'figaro'
 
 gem 'twitter', :git => 'https://github.com/sferik/twitter.git'
+
+gem 'rails_12factor', group: :production
