@@ -1,11 +1,14 @@
-<h1>Welcome to Twoppleganger!</h1>
 
 <% if current_user %>
-  <%= link_to 'Sign out', "/signout" %>
-  <p>Signed in as @<%= current_user.name %></p>
-  <%= image_tag current_user.profile_pic_url %>
-  <%= link_to 'Find your Twoppleganger', "/match" %>
+  <h2>Find your Twoppleganger</h2>
+  <div class="profile-pic">
+    <%= image_tag current_user.profile_pic_url, class: "user-pic" %>
+    <p>@<%= current_user.name %></p>
+  </div>
+  <%= link_to 'Find your Twoppleganger', "/match", class: 'twop-button' %>
+  <%= link_to 'Sign out', "/signout", class: "sign-out" %>
 <% else %>
-  <p>Sign in to Twitter to find your Twitter Doppleganger</p>
-  <%= link_to "Sign in", "/auth/twitter" %>
+  <h1>Welcome to Twoppleganger!</h1>
+  <p>Sign in to find your Twitter doppleganger</p>
+  <%= link_to "Sign in with Twitter", "/auth/twitter", class: "twitter-sign-in"%>
 <% end %>

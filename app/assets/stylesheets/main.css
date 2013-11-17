@@ -1,0 +1,80 @@
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  background-color: #FFF566;
+}
+
+h1, h2, p {
+  text-align:center;
+}
+
+.container {
+  width:50%;
+  height: 300px;
+  margin: 150px auto;
+  border:1px solid black;
+  border-radius:5px;
+  background-color:white;
+}
+
+.flash.notice {
+  width: 200px;
+  margin:5px auto;
+  background-color: #d1ffd7;
+  border: 1px solid #00ff7f;
+  border-radius: 5px;
+  text-align:center;
+
+}
+
+.twitter-sign-in {
+  display:block;
+  width:200px;
+  height:40px;
+  margin: 0 auto;
+  text-align:center;
+  line-height:40px;
+  padding: 5px 10px;
+  background-color: #55ACEE;
+  border-radius: 5px;
+  color: white;
+  text-decoration:none;
+}
+
+.twitter-sign-in:hover {
+  background-color: #1689e0;
+  border-color:#1689e0;
+}
+
+.sign-out {
+  float:right;
+}
+
+.profile-pic {
+  margin: 0 auto;
+  width:150px;
+}
+
+.user-pic {
+  margin-left: 25%;
+  height:80px;
+  width:80px;
+  border-radius:100%;
+}
+
+.twop-button {
+  display:block;
+  width:300px;
+  height:40px;
+  margin: 0 auto;
+  line-height:40px;
+  text-align:center;
+  padding: 5px 10px;
+  background-color: #ee55ac;
+  border-radius: 5px;
+  color: white;
+  text-decoration:none;
+}
+
+.twop-button:hover {
+  background-color: #e01689;
+}
