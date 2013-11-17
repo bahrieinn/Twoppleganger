@@ -8,7 +8,6 @@ Twoppleganger::Application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signout'                 => 'sessions#destroy', as: 'signout'
   get '/match'                   => 'users#twop_lookup'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

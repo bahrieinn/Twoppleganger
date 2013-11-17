@@ -3,14 +3,17 @@ body {
   background-color: #FFF566;
 }
 
-h1, h2, p {
+h1, h2, h3, p {
   text-align:center;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 
 .container {
   width:50%;
   height: 300px;
   margin: 150px auto;
+  margin-bottom:0;
   border:1px solid black;
   border-radius:5px;
   background-color:white;
@@ -31,6 +34,7 @@ h1, h2, p {
   width:200px;
   height:40px;
   margin: 0 auto;
+  margin-top: 60px;
   text-align:center;
   line-height:40px;
   padding: 5px 10px;
@@ -46,7 +50,9 @@ h1, h2, p {
 }
 
 .sign-out {
-  float:right;
+  position:absolute;
+  top:5px;
+  right:5px;
 }
 
 .profile-pic {
@@ -77,4 +83,12 @@ h1, h2, p {
 
 .twop-button:hover {
   background-color: #e01689;
+}
+
+.twop-description {
+  margin-top:5px;
+}
+
+.credits p {
+  font-size:0.8em;
 }

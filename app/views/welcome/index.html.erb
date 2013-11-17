@@ -1,12 +1,12 @@
 
 <% if current_user %>
   <h2>Find your Twoppleganger</h2>
+  <p class="twop-description">Find who in your network most closely resembles you in #Friends, Followers, and Tweets</p>
   <div class="profile-pic">
     <%= image_tag current_user.profile_pic_url, class: "user-pic" %>
     <p>@<%= current_user.name %></p>
   </div>
   <%= link_to 'Find your Twoppleganger', "/match", class: 'twop-button' %>
-  <%= link_to 'Sign out', "/signout", class: "sign-out" %>
 <% else %>
   <h1>Welcome to Twoppleganger!</h1>
   <p>Sign in to find your Twitter doppleganger</p>

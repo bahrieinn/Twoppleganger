@@ -7,13 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <div class="flash-message">
+  <%= link_to 'Sign out', "/signout", class: "sign-out" %>
+  <div class="flash-message">
       <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}") %>
       <% end %>
     </div>
+  <div class="container">
     <%= yield %>
+  </div>
+  <div class="credits">
+    <p>an experimental app built by <%= link_to 'me',' http://github.com/bahrieinn' %></p>
   </div>
 </body>
 </html>
