@@ -17,11 +17,15 @@ ActiveRecord::Schema.define(version: 20131116224944) do
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
-    t.string   "provier"
+    t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
     t.string   "oauth_secret"
+    t.string   "profile_pic_url"
+    t.integer  "follower_count"
+    t.integer  "following_count"
+    t.integer  "tweet_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
