@@ -41,4 +41,26 @@ class User < ActiveRecord::Base
     client = self.create_thread
     @users = client.users(user_id_array)
   end
+
+  def calculate_match_score(user)
+    follower_index = self.get_follower_index(user)
+    following_index = self.get_following_index(user)
+    tweet_index = self.get_tweet_index(user)
+    
+    match_score = 1 - ((follower_index + following_index + tweet_index) / 3).to_f
+    match_score = match_score * 100
+  end
+
+  def get_follower_index(user)
+    (self.follower_count - user.follower_count).abs / self.follower_count.to_f
+  end
+
+  def get_following_index(user)
+    (self.following_count - user.following_count).abs / self.following_count.to_f
+  end
+
+  def get_tweet_index(user)
+    (self.tweet_count - user.tweet_count).abs / self.tweet_count.to_f
+  end
+
 end
