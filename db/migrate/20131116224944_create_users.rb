@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :oauth_token
       t.string :oauth_secret
-      t.string   :profile_pic_url
+      t.string :profile_pic_url
 
       t.timestamps
     end
