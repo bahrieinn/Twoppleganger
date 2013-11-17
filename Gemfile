@@ -49,3 +49,5 @@ gem 'omniauth-twitter'
 
 # Figaro for ENV variables
 gem 'figaro'
+
+gem 'twitter', :git => 'https://github.com/sferik/twitter.git'
