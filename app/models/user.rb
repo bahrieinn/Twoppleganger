@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
       user.oauth_token     = auth['credentials']['token']
       user.oauth_secret    = auth['credentials']['secret']
       user.profile_pic_url = auth['info']['image']
+      user.follower_count  = auth['extra']['raw_info']['followers_count'].to_i
+      user.following_count = auth['extra']['raw_info']['friends_count'].to_i
+      user.tweet_count     = auth['extra']['raw_info']['statuses_count'].to_i
     end
   end
 
@@ -46,7 +49,7 @@ class User < ActiveRecord::Base
     follower_index = self.get_follower_index(user)
     following_index = self.get_following_index(user)
     tweet_index = self.get_tweet_index(user)
-    
+
     match_score = 1 - ((follower_index + following_index + tweet_index) / 3).to_f
     match_score = match_score * 100
   end
