@@ -45,25 +45,44 @@ class User < ActiveRecord::Base
     @users = client.users(user_id_array)
   end
 
+  def determine_match
+    friend_follower_ids = (self.get_friend_ids + self.get_follower_ids).uniq
+    network_list = self.users_lookup(friend_follower_ids)
+    network_list_with_scores = {}
+
+    network_list.each do |user|
+      network_list_with_scores[user.screen_name] = {
+        'match_score' => calculate_match_score(user),
+        'profile_image' => user.profile_image_url
+      }
+    end
+    final_list = network_list_with_scores.select { |user, info| info['match_score'] > 0 }
+    final_list.sort_by { |user, info| info['match_score'] }.reverse[0..2]
+  end
+
   def calculate_match_score(user)
     follower_index = self.get_follower_index(user)
     following_index = self.get_following_index(user)
     tweet_index = self.get_tweet_index(user)
 
     match_score = 1 - ((follower_index + following_index + tweet_index) / 3).to_f
-    match_score = match_score * 100
+    if match_score.abs > 1 
+      match_score = 0
+    else
+      match_score = match_score * 100
+    end
   end
 
   def get_follower_index(user)
-    (self.follower_count - user.follower_count).abs / self.follower_count.to_f
+    (self.follower_count - user.followers_count).abs / self.follower_count.to_f
   end
 
   def get_following_index(user)
-    (self.following_count - user.following_count).abs / self.following_count.to_f
+    (self.following_count - user.friends_count).abs / self.following_count.to_f
   end
 
   def get_tweet_index(user)
-    (self.tweet_count - user.tweet_count).abs / self.tweet_count.to_f
+    (self.tweet_count - user.tweets_count).abs / self.tweet_count.to_f
   end
 
 end
