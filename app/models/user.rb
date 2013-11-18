@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def network_over_limit?
+    (self.follower_count + self.following_count) >= 18_000
+  end
+
   def create_thread
     Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_KEY']

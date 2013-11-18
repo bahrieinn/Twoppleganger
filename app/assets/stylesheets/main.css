@@ -50,10 +50,18 @@ h1, h2, h3, p {
 }
 
 .sign-out {
+  width:300px;
   position:absolute;
   top:5px;
   right:5px;
 }
+
+.sign-out p {
+  display:inline;
+  text-align:left;
+  margin-right:10px;
+}
+
 
 .profile-pic {
   margin: 0 auto;

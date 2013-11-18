@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to 'Sign out', "/signout", class: "sign-out" %>
+  <% if current_user %>
+    <div class="sign-out">
+      <p>Signed in as <%= current_user.name %> |</p><%= link_to 'Sign out', "/signout" %>
+    </div>
+  <% end %>
+
   <div class="flash-message">
       <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}") %>
