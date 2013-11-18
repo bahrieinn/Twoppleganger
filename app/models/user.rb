@@ -60,8 +60,7 @@ class User < ActiveRecord::Base
         'profile_image' => user.profile_image_url
       }
     end
-    final_list = network_list_with_scores.select { |user, info| info['match_score'] > 0 }
-    final_list.sort_by { |user, info| info['match_score'] }.reverse[0..2]
+    network_list.sort_by { |user, info| info['match_score'] }.reverse[0..4]
   end
 
   def calculate_match_score(user)
@@ -70,23 +69,19 @@ class User < ActiveRecord::Base
     tweet_index = self.get_tweet_index(user)
 
     match_score = 1 - ((follower_index + following_index + tweet_index) / 3).to_f
-    if match_score.abs > 1 
-      match_score = 0
-    else
-      match_score = match_score * 100
-    end
+    match_score = match_score * 100
   end
 
   def get_follower_index(user)
-    (self.follower_count - user.followers_count).abs / self.follower_count.to_f
+    (self.follower_count - user.followers_count).abs / (self.follower_count + user.followers_count).to_f
   end
 
   def get_following_index(user)
-    (self.following_count - user.friends_count).abs / self.following_count.to_f
+    (self.following_count - user.friends_count).abs / (self.following_count + user.friends_count).to_f
   end
 
   def get_tweet_index(user)
-    (self.tweet_count - user.tweets_count).abs / self.tweet_count.to_f
+    (self.tweet_count - user.tweets_count).abs / (self.tweet_count + user.tweets_count).to_f
   end
 
 end
