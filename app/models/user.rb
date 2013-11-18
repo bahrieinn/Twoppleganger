@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
         'profile_image' => user.profile_image_url
       }
     end
-    network_list.sort_by { |user, info| info['match_score'] }.reverse[0..4]
+    network_list_with_scores.sort_by { |user, info| info['match_score'] }.reverse[0..4]
   end
 
   def calculate_match_score(user)
